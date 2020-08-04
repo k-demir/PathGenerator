@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const edgeSchema = mongoose.Schema({
-  connected_id: mongoose.Schema.Types.ObjectId,
+  connected_id: Number,
   distance: Number
 })
 

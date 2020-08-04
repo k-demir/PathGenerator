@@ -1,5 +1,6 @@
 const pathRouter = require('express').Router()
 const Node = require('../models/Node')
+const pathCreator = require('../utils/pathCreator')
 
 pathRouter.get('/:lon/:lat/:length', async (req, res) => {
   const closeNodes = await Node.find({"coordinates": {
@@ -11,6 +12,7 @@ pathRouter.get('/:lon/:lat/:length', async (req, res) => {
         "$maxDistance": req.params.length/2
     }}})
 
+  pathCreator.createPath(closeNodes, null, null)
   res.json(closeNodes)
 })
 

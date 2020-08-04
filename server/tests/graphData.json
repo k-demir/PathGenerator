@@ -1,0 +1,322 @@
+[
+  {
+  "coordinates": [
+  22.2610675,
+  60.4492734
+  ],
+  "_id": 7235234538,
+  "edges": [
+  {
+  "connected_id": 6660382002,
+  "distance": 34.46
+  },
+  {
+  "connected_id": 1508505759,
+  "distance": 72.95
+  },
+  {
+  "connected_id": 7235234536,
+  "distance": 7.4
+  },
+  {
+  "connected_id": 7235234537,
+  "distance": 6.97
+  }
+  ]
+  },
+  {
+  "coordinates": [
+  22.2609637,
+  60.4492373
+  ],
+  "_id": 7235234537,
+  "edges": [
+  {
+  "connected_id": 7182293483,
+  "distance": 37.85
+  },
+  {
+  "connected_id": 1508505757,
+  "distance": 73.22
+  },
+  {
+  "connected_id": 7235234538,
+  "distance": 6.97
+  }
+  ]
+  },
+  {
+  "coordinates": [
+  22.2611778,
+  60.4493118
+  ],
+  "_id": 7235234536,
+  "edges": [
+  {
+  "connected_id": 1044249655,
+  "distance": 37.66
+  },
+  {
+  "connected_id": 1258693906,
+  "distance": 47.02
+  },
+  {
+  "connected_id": 7235234538,
+  "distance": 7.4
+  }
+  ]
+  },
+  {
+  "coordinates": [
+  22.2614274,
+  60.4490194
+  ],
+  "_id": 6660382002,
+  "edges": [
+  {
+  "connected_id": 1044249782,
+  "distance": 2.97
+  },
+  {
+  "connected_id": 7235234538,
+  "distance": 34.46
+  }
+  ]
+  },
+  {
+  "coordinates": [
+  22.2614589,
+  60.4489977
+  ],
+  "_id": 1044249782,
+  "edges": [
+  {
+  "connected_id": 15368635,
+  "distance": 10.61
+  },
+  {
+  "connected_id": 6660382002,
+  "distance": 2.97
+  },
+  {
+  "connected_id": 7182293483,
+  "distance": 7.28
+  },
+  {
+  "connected_id": 1044249655,
+  "distance": 8.22
+  }
+  ]
+  },
+  {
+  "coordinates": [
+  22.2615838,
+  60.4490386
+  ],
+  "_id": 1044249655,
+  "edges": [
+  {
+  "connected_id": 1044249782,
+  "distance": 8.22
+  },
+  {
+  "connected_id": 5229939872,
+  "distance": 10.43
+  },
+  {
+  "connected_id": 7182293482,
+  "distance": 5.41
+  },
+  {
+  "connected_id": 7235234536,
+  "distance": 37.66
+  }
+  ]
+  },
+  {
+  "coordinates": [
+  22.261355,
+  60.4489569
+  ],
+  "_id": 7182293483,
+  "edges": [
+  {
+  "connected_id": 1044249782,
+  "distance": 7.28
+  },
+  {
+  "connected_id": 1044249660,
+  "distance": 1.75
+  },
+  {
+  "connected_id": 7235234537,
+  "distance": 37.85
+  }
+  ]
+  },
+  {
+  "coordinates": [
+  22.2613454,
+  60.4489419
+  ],
+  "_id": 1044249660,
+  "edges": [
+  {
+  "connected_id": 7182321010,
+  "distance": 1.29
+  },
+  {
+  "connected_id": 7182293483,
+  "distance": 1.75
+  }
+  ]
+  },
+  {
+  "coordinates": [
+  22.2613429,
+  60.4489304
+  ],
+  "_id": 7182321010,
+  "edges": [
+  {
+  "connected_id": 1258537284,
+  "distance": 56.64
+  },
+  {
+  "connected_id": 1044249660,
+  "distance": 1.29
+  },
+  {
+  "connected_id": 382059208,
+  "distance": 8.22
+  }
+  ]
+  },
+  {
+  "coordinates": [
+  22.2616789,
+  60.4490514
+  ],
+  "_id": 7182293482,
+  "edges": [
+  {
+  "connected_id": 1044249655,
+  "distance": 5.41
+  },
+  {
+  "connected_id": 1258693808,
+  "distance": 6.46
+  }
+  ]
+  },
+  {
+  "coordinates": [
+  22.2617759,
+  60.4490843
+  ],
+  "_id": 1258693808,
+  "edges": [
+  {
+  "connected_id": 7182293482,
+  "distance": 6.46
+  },
+  {
+  "connected_id": 1258693848,
+  "distance": 52.91
+  }
+  ]
+  },
+  {
+  "coordinates": [
+  22.2606709,
+  60.4496528
+  ],
+  "_id": 1258693906,
+  "edges": [
+  {
+  "connected_id": 7235234536,
+  "distance": 47.02
+  },
+  {
+  "connected_id": 1258693842,
+  "distance": 16.05
+  }
+  ]
+  },
+  {
+  "coordinates": [
+  22.2615692,
+  60.4489193
+  ],
+  "_id": 15368635,
+  "edges": [
+  {
+  "connected_id": 1044249782,
+  "distance": 10.61
+  },
+  {
+  "connected_id": 382059208,
+  "distance": 9.53
+  }
+  ]
+  },
+  {
+  "coordinates": [
+  22.2616826,
+  60.4489584
+  ],
+  "_id": 5229939872,
+  "edges": [
+  {
+  "connected_id": 5229939873,
+  "distance": 8.81
+  },
+  {
+  "connected_id": 1044249655,
+  "distance": 10.43
+  }
+  ]
+  },
+  {
+  "coordinates": [
+  22.2614278,
+  60.4488695
+  ],
+  "_id": 382059208,
+  "edges": [
+  {
+  "connected_id": 6660382003,
+  "distance": 3.57
+  },
+  {
+  "connected_id": 15368635,
+  "distance": 9.53
+  },
+  {
+  "connected_id": 7182321010,
+  "distance": 8.22
+  },
+  {
+  "connected_id": 382059209,
+  "distance": 7.79
+  }
+  ]
+  },
+  {
+  "coordinates": [
+  22.2613725,
+  60.4488526
+  ],
+  "_id": 6660382003,
+  "edges": [
+  {
+  "connected_id": 21537034,
+  "distance": 43.88
+  },
+  {
+  "connected_id": 382059208,
+  "distance": 3.57
+  }
+  ]
+  }
+]

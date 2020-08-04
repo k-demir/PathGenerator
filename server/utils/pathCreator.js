@@ -1,5 +1,7 @@
-const createPath = async (nodes, startId, length) => {
+const Dijkstra = require('./dijkstra')
 
-
-  // return {nodeList, totalLength}
+const createPath = async (graph, startId, length) => {
+  
 }
+
+module.exports = { createPath }
