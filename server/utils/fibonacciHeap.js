@@ -69,15 +69,7 @@ class FibonacciHeap {
     let parentNode = node.parent
     if (parentNode !== null && node.value < parentNode.value) {
       this._moveChildToRootList(node, parentNode)
-      let newParent = parentNode
-      while (parentNode.lostChild == true) {
-        newParent = parentNode.parent
-        this._moveChildToRootList(parentNode, newParent)
-        parentNode = newParent
-      }
-      if (newParent.parent !== null) {
-        newParent.lostChild = true
-      }
+      this._cascadeMoving(parentNode)
     }
     if (node.value < this.#minNode.value)
       this.#minNode = node
@@ -89,6 +81,18 @@ class FibonacciHeap {
     parent.degree -= 1
     node.parent = null
     node.lostChild = false
+  }
+
+  _cascadeMoving(parent) {
+    let newParent = parent.parent
+    if (newParent !== null) {
+      if (parent.lostChild) {
+        this._moveChildToRootList(parent, newParent)
+        this._cascadeMoving(newParent)
+      } else {
+        parent.lostChild = true
+      }
+    }
   }
 
   _cleanUp() {
@@ -116,7 +120,7 @@ class FibonacciHeap {
   }
 
   isEmpty() {
-    if (this.#rootLinkedList === null)
+    if (this.#minNode === null)
       return true
     return false
   }

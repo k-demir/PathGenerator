@@ -2,9 +2,10 @@ const FibonacciHeap = require('./fibonacciHeap')
 const GraphIndexer = require('./graphIndexer')
 
 class Dijkstra {
-  constructor(sourceNode, graph) {
+  constructor(sourceNode, graph, targetNode = null) {
     this.sourceNode = sourceNode
     this.graph = graph
+    this.targetNode = targetNode
     this.graphIndexer = new GraphIndexer(graph)
     this.dist = new Array(graph.length).fill(Infinity)
     this.prev = new Array(graph.length).fill(null)
@@ -21,6 +22,8 @@ class Dijkstra {
 
     while (!priorityQueue.isEmpty()) {
       let currentNode = priorityQueue.popMinimum()
+      if (targetNode !== null && this.graphIndexer.getId(currentNode.key) === targetNode)
+        break
       for (let neighbor of this.graph[currentNode.key]['edges']) {
         const neighborIdx = this.graphIndexer.getIndex(neighbor['connected_id'])
         const newDist = this.dist[currentNode.key] + neighbor['distance']
@@ -33,19 +36,25 @@ class Dijkstra {
     }
   }
 
-  getPath(targetNode) {
+  getPath(targetNode = null) {
+    if (targetNode === null) {
+      targetNode = this.targetNode
+    }
     let path = []
     let idx = this.graphIndexer.getIndex(targetNode)
     if (this.prev[idx] !== null || targetNode === this.sourceNode) {
-      while (idx !== null) {
+      while (idx) {
         path.push(idx)
         idx = this.prev[idx]
       }
     }
     return path.map(idx => this.graphIndexer.getId(idx)).reverse()
-  }
+    }
 
-  getDistance(targetNode) {
+  getDistance(targetNode = null) {
+    if (targetNode === null) {
+      targetNode = this.targetNode
+    }
     let idx = this.graphIndexer.getIndex(targetNode)
     return this.dist[idx]
   }
