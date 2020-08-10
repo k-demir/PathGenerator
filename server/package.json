@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --verbose --runInBand",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "build:ui": "rm -rf build && cd ../client && npm run build --prod && cp -r build ../server"
   },
   "author": "Kadir Demir",
   "license": "ISC",
@@ -23,5 +24,8 @@
   },
   "jest": {
     "testEnvironment": "node"
+  }, 
+  "engines": {
+    "node": "12.x"
   }
 }
