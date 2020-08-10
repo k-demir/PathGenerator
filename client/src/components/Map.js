@@ -18,7 +18,9 @@ const Map = ({ path, lon, lat, createPath, setFirstPoint, firstClick, reset, wa
       L.polyline(path, {color: 'navy', weight: 3}).addTo(map.current)
     }
     for (let wp of waypoints) {
-      addWaypoint(wp)
+      if (wp) {
+        addWaypoint(wp)
+      }
     }
   }, [path, waypoints])
 

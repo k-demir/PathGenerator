@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseUrl = 'http://localhost:3001/api/path'
+const baseUrl = '/api/path'
 
 export const generatePath = async (lon, lat, length) => {
   const res = await axios.get(`${baseUrl}/${lon}/${lat}/${length}`)
