@@ -48,6 +48,7 @@ class Dijkstra {
         idx = this.prev[idx]
       }
     }
+    path.push(this.graphIndexer.getIndex(this.sourceNode))
     return path.map(idx => this.graphIndexer.getCoordinates(idx)).reverse()
     }
 
