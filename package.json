@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --verbose --runInBand",
-    "dev": "nodemon index.js",
-    "build:ui": "rm -rf build && cd ../client && npm run build --prod && cp -r build ../server"
+    "test": "cd server && jest --verbose --runInBand",
+    "dev": "cd server && nodemon index.js",
+    "build:ui": "rm -rf server/build && cd client && npm run build --prod && cp -r build ../server"
   },
   "author": "Kadir Demir",
   "license": "ISC",
@@ -18,13 +18,13 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "jest": "^26.2.2",
+    "jest": "^24.9.0",
     "nodemon": "^2.0.4",
     "supertest": "^4.0.2"
   },
   "jest": {
     "testEnvironment": "node"
-  }, 
+  },
   "engines": {
     "node": "12.x"
   }
