@@ -4,30 +4,24 @@ const Dijkstra = require('./dijkstra')
 
 const earthRadius = 6371000
 
-const createPath = async (startLon, startLat, length) => {
-  const startNode = await closestNode(startLon, startLat)
+const findPath = async (lon1, lat1, lon2, lat2) => {
+  const startNode = await closestNode(lon1, lat1)
+  const targetNode = await closestNode(lon2, lat2)
 
-  const targets = await potentialTargets(startLon, startLat, length/3-200, length/3)
-  const randomTarget = targets[Math.floor(Math.random() * targets.length)]
-  let randomTarget2 
-  
-  do {
-    randomTarget2 = targets[Math.floor(Math.random() * targets.length)]
-  } while (randomTarget2 === randomTarget || randomTarget2 === startNode)
-
-  const waypointList = [startNode, randomTarget, randomTarget2, startNode]
-  let path = []
-  let dist = 0
-
-  for (let i = 0; i < waypointList.length - 1; i++) {
-    let c = [...waypointList[i]['coordinates'], ...waypointList[i+1]['coordinates']]
-    let m = coordinateMidPoint(...c)
-    let l = coordinatesToDistance(...c)
-    let newGraph = await closestNodes(...m, l/2+200)
-    let dijkstra = new Dijkstra(waypointList[i]['_id'], newGraph, waypointList[i+1]['_id'])
-    path.push(...dijkstra.getPath())
-    dist += dijkstra.getDistance()
+  if (startNode['_id'] === targetNode['_id']) {
+    return { path: [startNode.coordinates.reverse()], dist: 0}
   }
+
+  const graph = await closestNodes(
+      ...coordinateMidPoint(...startNode.coordinates, ...targetNode.coordinates, lat2), 
+      coordinatesToDistance(...startNode.coordinates, ...targetNode.coordinates) + 1000
+    )
+
+  let dijkstra = new Dijkstra(startNode['_id'], graph, targetNode['_id'])
+  let path = []
+  let dist = []
+  path.push(...dijkstra.getPath())
+  dist += dijkstra.getDistance()
 
   return { path, dist }
 }
@@ -45,27 +39,20 @@ const closestNodes = async (lon, lat, maxDist) => {
 }
 
 const closestNode = async (lon, lat) => {
-  const node = await Node.findOne({"coordinates": {
-    "$near": {
-        "$geometry": {
-            "type": "Point",
-            "coordinates": [lon, lat]
-        }
-    }}})
-  return node
-}
-
-const potentialTargets = async (lon, lat, minDist, maxDist) => {
   const nodes = await Node.find({"coordinates": {
     "$near": {
         "$geometry": {
             "type": "Point",
             "coordinates": [lon, lat]
         },
-        "$minDistance": minDist,
-        "$maxDistance": maxDist
+        "$maxDistance": 100
     }}})
-    return nodes
+  const closest = nodes.reduce(
+    (c, n) => coordinatesToDistance(lon, lat, n.coordinates[0], n.coordinates[1]) < c[0]
+      ? [coordinatesToDistance(lon, lat, n.coordinates[0], n.coordinates[1]), n]
+      : c
+  , [Infinity, nodes[0]])
+  return closest[1]
 }
 
 const coordinateMidPoint = (sourceLon, sourceLat, targetLon, targetLat) => {
@@ -88,8 +75,4 @@ const degToRad = (deg) => {
   return Math.PI * deg / 180
 }
 
-const radToDeg = (rad) => {
-  return 180 * rad / Math.PI
-}
-
-module.exports = { createPath, closestNode, closestNodes }
+module.exports = { findPath, closestNode, closestNodes }

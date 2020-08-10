@@ -48,7 +48,7 @@ class Dijkstra {
         idx = this.prev[idx]
       }
     }
-    return path.map(idx => this.graphIndexer.getId(idx)).reverse()
+    return path.map(idx => this.graphIndexer.getCoordinates(idx)).reverse()
     }
 
   getDistance(targetNode = null) {
